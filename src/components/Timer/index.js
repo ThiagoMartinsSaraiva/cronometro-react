@@ -16,7 +16,7 @@ export default class Timer extends Component {
 
   zerar = () => {
     clearInterval(this.timer)
-    this.setState({ timeList: [...this.state.timeList, this.state.currentTime], currentTime: this.state.currentTime = 0, pausado: true })
+    this.setState({ timeList: [...this.state.timeList, this.state.currentTime], currentTime: 0, pausado: true })
   }
 
   pausar = () => {
