@@ -5,29 +5,29 @@ import TimeList from '../TimeList'
 import './index.css'
 
 export default () => {
-  const [state, setState] = useState({ currentTime: 0, pausado: true, timeList: [] })
+  const [state, setState] = useState({ currentTime: 0, paused: true, timeList: [] })
   const [timer, setTimer] = useState(null)
 
   function zerar() {
     clearInterval(timer)
     setTimer(0)
-    setState({ timeList: [state.currentTime, ...state.timeList], currentTime: 0, pausado: true })
+    setState({ timeList: [state.currentTime, ...state.timeList], currentTime: 0, paused: true })
   }
 
   function pausar() {
     clearInterval(timer)
     setTimer(0)
-    setState({ ...state, pausado: true })
+    setState({ ...state, paused: true })
   }
 
   function apagar() {
     clearInterval(timer)
     setTimer(0)
-    setState({ ...state, pausado: true, timeList: [] })
+    setState({ ...state, paused: true, timeList: [] })
   }
 
   function iniciar() {
-    setState({ ...state, pausado: false })
+    setState({ ...state, paused: false })
     setTimer(setInterval(() => {
       setState(state => { 
         return { ...state, currentTime: state.currentTime + 1 }
@@ -40,8 +40,8 @@ export default () => {
       <h1>Cronômetro</h1>
       <section className="main-buttons">
         <Button handleClick={zerar} disabled={state.currentTime === 0}>Zerar</Button>
-        <Button handleClick={pausar} disabled={state.pausado}>Pausar</Button>
-        <Button handleClick={iniciar} disabled={!state.pausado}>Iniciar</Button>
+        <Button handleClick={pausar} disabled={state.paused}>Pausar</Button>
+        <Button handleClick={iniciar} disabled={!state.paused}>Iniciar</Button>
       </section>
       <section>
         <Button handleClick={apagar} disabled={state.timeList.length < 1}>Limpar</Button>
