@@ -30,9 +30,9 @@ export default () => {
     setState({ ...state, paused: false })
     setTimer(setInterval(() => {
       setState(state => { 
-        return { ...state, currentTime: state.currentTime + 1 }
+        return { ...state, currentTime: state.currentTime + 0.01 }
       })
-    }, 1000))
+    }, 10))
   }
 
   return (
@@ -46,7 +46,7 @@ export default () => {
       <section>
         <Button handleClick={apagar} disabled={state.timeList.length < 1}>Limpar</Button>
       </section>
-      <p className="pl" style={{fontSize:'1.5em'}}>{ state.currentTime }</p>
+      <p className="pl" style={{fontSize:'1.5em'}}>{ Number(state.currentTime).toFixed(2) }</p>
       <TimeList timeList={state.timeList} />
     </div>
   )

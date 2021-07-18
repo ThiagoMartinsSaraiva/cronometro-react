@@ -9,7 +9,7 @@ export default props => (
       {
         props.timeList.map((time, index) => (
           <li className="item" key={index}>
-            { time }
+            { Number(time).toFixed(2) }
           </li>
         ))
       }
