@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import Button from '../Button'
 import TimeList from '../TimeList'
 
+import { FiPlay, FiPause, FiPlus, FiTrash2 } from 'react-icons/fi'
+
 import './index.css'
 
 export default () => {
@@ -39,12 +41,12 @@ export default () => {
     <div>
       <h1>Cronômetro</h1>
       <section className="main-buttons">
-        <Button handleClick={zerar} disabled={state.currentTime === 0}>Zerar</Button>
-        <Button handleClick={pausar} disabled={state.paused}>Pausar</Button>
-        <Button handleClick={iniciar} disabled={!state.paused}>Iniciar</Button>
+        <Button handleClick={zerar} disabled={state.currentTime === 0}><FiPlus /></Button>
+        <Button handleClick={pausar} disabled={state.paused}><FiPause /></Button>
+        <Button handleClick={iniciar} disabled={!state.paused}><FiPlay /></Button>
       </section>
       <section>
-        <Button handleClick={apagar} disabled={state.timeList.length < 1}>Limpar</Button>
+        <Button handleClick={apagar} disabled={state.timeList.length < 1}><FiTrash2 /></Button>
       </section>
       <p className="pl" style={{fontSize:'1.5em'}}>{ Number(state.currentTime).toFixed(2) }</p>
       <TimeList timeList={state.timeList} />
